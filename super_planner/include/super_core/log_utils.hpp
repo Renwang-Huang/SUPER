@@ -81,7 +81,7 @@ namespace super_planner {
         Trajectory backup_yaw_traj;
 
         // RET
-        int ret_code{SUPPER_UNDEFINED};
+        int ret_code{SUPER_UNDEFINED};
 
         // comp_t
         double mapping_t{0.0}, astar_t{0.0}, exp_sfc_t{0.0}, exp_opt_t{0.0}, backup_sfc_t{0.0}, backup_opt_t{0.0},
@@ -135,7 +135,7 @@ namespace super_planner {
             backup_opt_t = 0.0;
             total_t = 0.0;
             viz_t = 0.0;
-            ret_code = SUPER_RET_CODE::SUPPER_UNDEFINED;
+            ret_code = SUPER_RET_CODE::SUPER_UNDEFINED;
             exp_traj.clear();
             exp_yaw_traj.clear();
             backup_traj.clear();

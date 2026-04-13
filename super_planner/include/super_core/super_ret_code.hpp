@@ -24,7 +24,7 @@
 #ifndef SUPER_RET_CODE_HPP
 #define SUPER_RET_CODE_HPP
 
-#include <cstring>
+#include <string> 
 #include <vector>
 
 namespace super_planner {
@@ -32,13 +32,12 @@ namespace super_planner {
         SUPER_SUCCESS_WITH_BACKUP = 3,
         SUPER_SUCCESS_NO_BACKUP = 2,
         SUPER_SUCCESS = 1,
-        SUPPER_UNDEFINED = -0,
+        SUPER_UNDEFINED = 0, 
         SUPER_NO_ODOM = -1,
         SUPER_NO_START_POINT = -2,
-
     };
 
-    static std::string SUPER_RET_CODE_STR(const int& ret) {
+    inline std::string SUPER_RET_CODE_STR(int ret) {
         switch (ret) {
         case SUPER_SUCCESS_WITH_BACKUP:
             return "Success, with backup trajectory also success";
@@ -46,13 +45,15 @@ namespace super_planner {
             return "Success, without need of backup";
         case SUPER_SUCCESS:
             return "Success";
-        case SUPPER_UNDEFINED:
+        case SUPER_UNDEFINED:
             return "Undefined";
         case SUPER_NO_ODOM:
             return "No odom, return at the start of the replan";
         case SUPER_NO_START_POINT:
             return "Cannot find a start point in the local map";
+        default:
+            return "Unknown return code";
         }
-    };
+    }
 }
 #endif
