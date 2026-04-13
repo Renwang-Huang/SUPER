@@ -2491,7 +2491,7 @@ FMT_CONSTEXPR20 auto write_float(OutputIt out, const DecimalFP& f,
 }
 
 template <typename T> constexpr bool isnan(T value) {
-  return !(value >= value);  // std::isnan doesn't support __float128.
+  return !(value >= value);  // isnan doesn't support __float128.
 }
 
 template <typename T, typename Enable = void>
@@ -3251,7 +3251,7 @@ FMT_CONSTEXPR20 auto write(OutputIt out, T value) -> OutputIt {
   using uint = typename dragonbox::float_info<floaty>::carrier_uint;
   uint mask = exponent_mask<floaty>();
   if ((bit_cast<uint>(value) & mask) == mask)
-    return write_nonfinite(out, std::isnan(value), specs, fspecs);
+    return write_nonfinite(out, isnan(value), specs, fspecs);
 
   auto dec = dragonbox::to_decimal(static_cast<floaty>(value));
   return write_float(out, dec, specs, fspecs, {});
